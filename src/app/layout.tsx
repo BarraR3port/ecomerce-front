@@ -1,10 +1,10 @@
 import Footer from "@/components/footer";
 import NavBar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
 
 const inter = Inter({ subsets: ["latin"] });
 

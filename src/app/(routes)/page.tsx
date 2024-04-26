@@ -1,9 +1,9 @@
 import Billboard from "@/components/billboard";
 import Container from "@/components/ui/container";
-import type { Billboard as BillboardType, Product } from "../../types";
+import ProductList from "@/components/ui/product-list";
 import { getBillboard } from "@/query/billboards";
 import { getProducts } from "@/query/products";
-import ProductList from "@/components/ui/product-list";
+import type { Billboard as BillboardType, Product } from "../../types";
 
 export const revalidate = 0;
 

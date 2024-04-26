@@ -1,6 +1,6 @@
+import MainNav from "@components/main-nav";
 import Container from "@ui/container";
 import Link from "next/link";
-import MainNav from "@components/main-nav";
 import type { Category } from "../types";
 import NavbarActions from "./navbar-actions";
 

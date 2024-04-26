@@ -1,11 +1,11 @@
 "use client";
 
 import type { Product } from "@/types";
-import Image from "next/image";
-import { Button } from "./button";
 import { Expand, ShoppingCart } from "lucide-react";
-import Currency from "./currency";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Button } from "./button";
+import Currency from "./currency";
 
 interface ProductCardProps {
 	product: Product;
