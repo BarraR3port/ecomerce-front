@@ -15,3 +15,11 @@ export async function getProducts(query: Query): Promise<Product[]> {
 		})
 		.then(res => res.data);
 }
+
+export async function getProduct(productId: string, query: Query): Promise<Product> {
+	return api
+		.get(`/products/${productId}`, {
+			params: query
+		})
+		.then(res => res.data);
+}

@@ -5,6 +5,7 @@ import { TailwindIndicator } from "@/components/ui/tailwindcss-indicator";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SWRProvider } from "@/components/ui/swr-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,10 +23,12 @@ export default function RootLayout({
 		<html lang="es">
 			<body className={inter.className}>
 				<ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-					<NavBar />
-					{children}
-					<Footer />
-					<TailwindIndicator />
+					<SWRProvider>
+						<NavBar />
+						{children}
+						<Footer />
+						<TailwindIndicator />
+					</SWRProvider>
 				</ThemeProvider>
 			</body>
 		</html>

@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "./button";
 import Currency from "./currency";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface ProductCardProps {
 	product: Product;
@@ -14,14 +16,21 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
 	const [isMounted, setIsMounted] = useState(false);
 
+	const router = useRouter();
+
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
 
 	if (!isMounted) return null;
+
+	function onClick() {
+		router.push(`/product/${product.id}`);
+	}
+
 	return (
 		<div className="bg bg-background-container rounded-md border p-3 space-y-4">
-			<div className="group aspect-square rounded-md relative cursor-pointer">
+			<div onClick={onClick} className="group aspect-square rounded-md relative cursor-pointer">
 				<Image
 					src={product?.images[0]?.url}
 					alt={product.name}
@@ -45,12 +54,15 @@ export default function ProductCard({ product }: ProductCardProps) {
 			</div>
 			<div>
 				<div className="flex gap-2 items-center">
-					<p className="font-semibold text-lg">{product.name}</p>-
-					<p className="text-sm text-white/90">{product.category.name}</p>
+					<Link
+						href={`/product/${product.id}`}
+						className="font-semibold text-lg hover:underline hover:text-info"
+					>
+						{product.name}
+					</Link>
+					-<p className="text-sm text-white/90">{product.category.name}</p>
 				</div>
-				<p className="text-sm text-white/70 bg-background-container-secondary p-2 rounded-md">
-					{product.description}
-				</p>
+				<p className="text-sm text-white/80 bg-background-container/55 p-2 rounded-md">{product.description}</p>
 			</div>
 			<div>
 				<Currency value={product.price} />
