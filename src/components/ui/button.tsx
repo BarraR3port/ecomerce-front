@@ -12,15 +12,14 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"w-auto rounded-md bg-primary border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white font-semibold hover:opacity-75 transition",
-				destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-				outline:
-					"border border-input bg-background-container shadow-sm hover:bg-accent hover:text-accent-foreground",
-				secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+					"w-auto text-black rounded-md bg-primary border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 font-semibold",
+				destructive: "bg-destructive text-destructive-foreground shadow-sm ",
+				outline: "border border-input bg-background-container shadow-sm",
+				secondary: "bg-secondary text-secondary-foreground shadow-sm ",
 				ghost: "hover:text-accent-foreground",
-				link: "text-primary underline-offset-4 hover:underline",
-				success: "bg-success text-white shadow-sm hover:bg-success/80",
-				primary: "bg-primary text-white shadow-sm hover:bg-primary/80"
+				link: "text-primary underline-offset-4 hover:underline ",
+				success: "bg-success text-white shadow-sm ",
+				primary: "bg-primary text-black shadow-sm "
 			},
 			size: {
 				default: "h-9 px-4 py-2",
@@ -49,7 +48,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		const Comp = asChild ? Slot : "button";
 		return (
 			<Comp
-				className={cn(buttonVariants({ variant, size, className }), loading ? "opacity-50" : "", "relative")}
+				className={cn(
+					"hover:opacity-75 active:opacity-95 transition",
+					buttonVariants({ variant, size, className }),
+					loading ? "opacity-50" : "",
+					"relative"
+				)}
 				ref={ref}
 				{...props}
 				disabled={loading || props.disabled}

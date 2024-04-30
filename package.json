@@ -11,6 +11,7 @@
     "format": "biome format --write ."
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
@@ -22,6 +23,7 @@
     "million": "^3.0.6",
     "next": "14.2.3",
     "next-themes": "^0.3.0",
+    "query-string": "^9.0.0",
     "react": "18",
     "react-dom": "18",
     "swr": "^2.2.5",

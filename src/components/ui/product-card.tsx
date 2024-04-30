@@ -29,22 +29,23 @@ export default function ProductCard({ product }: ProductCardProps) {
 	}
 
 	return (
-		<div className="bg bg-background-container rounded-md border p-3 space-y-4">
-			<div onClick={onClick} className="group aspect-square rounded-md relative cursor-pointer">
+		<div className="bg bg-background-container rounded-md border p-3 space-y-4 min-w-[200px] max-w-[300px]">
+			<div onClick={onClick} className="group aspect-square rounded-md relative cursor-pointer ">
 				<Image
 					src={product?.images[0]?.url}
 					alt={product.name}
 					fill
 					className="aspect-square oject-cover rounded-md"
+					sizes="200px"
 				/>
-				<div className="md:opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+				<div className="sm:opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
 					<div className="flex gap-x-6 justify-center">
-						<Button size="icon" className="bg-white rounded-full" variant="ghost">
-							<Expand className="w-5 h-5 text-black" />
+						<Button size="icon" className="bg-white rounded-full hover:opacity-100" variant="ghost">
+							<Expand className="w-5 h-5 text-black " />
 						</Button>
 						<Button
 							size="icon"
-							className="group/button bg-white hover:text-warning rounded-full text-black"
+							className="group/button bg-white hover:text-warning hover:opacity-100 rounded-full text-black"
 							variant="ghost"
 						>
 							<ShoppingCart className="w-5 h-5" />
