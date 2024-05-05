@@ -11,9 +11,9 @@ interface GalleryProps {
 export default function Gallery({ images }: GalleryProps) {
 	return (
 		<Tabs defaultValue={images[0]?.id} className="flex flex-col-reverse">
-			<div className=" hidden w-full max-w-2xl sm:block lg:max-w-none space-y-4">
+			<div className="w-full max-w-2xl sm:block lg:max-w-none space-y-4">
 				{images.map(image => (
-					<TabsContent key={image.id} value={image.id} className="max-w-md ">
+					<TabsContent key={image.id} value={image.id} className="">
 						<div className="aspect-square relative h-full w-full sm:rounded-md overflow-hidden">
 							<Image fill src={image.url} alt="Image" className="object-cover object-center" />
 						</div>

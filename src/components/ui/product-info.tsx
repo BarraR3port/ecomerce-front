@@ -5,7 +5,9 @@ import Currency from "./currency";
 import { Separator } from "./separator";
 import { Button } from "./button";
 import { ShoppingCart } from "lucide-react";
-import { useEffect, useState } from "react";
+import { type MouseEventHandler, useEffect, useState } from "react";
+import { useToast } from "./use-toast";
+import useCart from "@/hooks/use-cart";
 
 interface ProductInfoProps {
 	product: Product;
@@ -14,11 +16,31 @@ interface ProductInfoProps {
 export default function ProductInfo({ product }: ProductInfoProps) {
 	const [isMounted, setIsMounted] = useState(false);
 
+	const { toast } = useToast();
+	const { addProduct } = useCart();
+
 	useEffect(() => {
 		setIsMounted(true);
 	}, []);
 
 	if (!isMounted) return null;
+	const onAddToCart: MouseEventHandler<HTMLButtonElement> = event => {
+		event.stopPropagation();
+		const added = addProduct(product);
+		if (added) {
+			toast({
+				title: "Producto agregado al carrito",
+				variant: "success"
+			});
+			return;
+		}
+
+		toast({
+			title: "Producto ya está en el carrito",
+			variant: "error"
+		});
+	};
+
 	return (
 		<div>
 			<h1 className="text-3xl font-bold text-white/90 ">{product.name}</h1>
@@ -39,7 +61,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
 				</div>
 			</div>
 			<div className="mt-10 flex items-center gap-x-3">
-				<Button variant="secondary" className="group flex items-center gap-x-2">
+				<Button onClick={onAddToCart} variant="secondary" className="group flex items-center gap-x-2">
 					Añadir al carrito
 					<ShoppingCart className="w-4 h-4 group-hover:text-warning" />
 				</Button>
