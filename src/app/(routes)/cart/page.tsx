@@ -2,6 +2,7 @@
 
 import CartItem from "@/components/cart-item";
 import Container from "@/components/ui/container";
+import Summary from "@/components/ui/summary";
 import useCart from "@/hooks/use-cart";
 import { useEffect, useState } from "react";
 
@@ -23,10 +24,17 @@ export default function Page() {
 					<div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
 						<div className="lg:col-span-7">
 							{products.length === 0 && <p className="text-white/80">No hay Productos</p>}
-							{products.map(product => (
-								<CartItem key={product.id} product={product} />
-							))}
+							<ul>
+								{products.map((product, index) => (
+									<CartItem
+										key={product.id}
+										product={product}
+										isLast={index === products.length - 1}
+									/>
+								))}
+							</ul>
 						</div>
+						<Summary />
 					</div>
 				</div>
 			</Container>

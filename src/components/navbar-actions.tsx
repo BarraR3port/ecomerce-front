@@ -18,10 +18,14 @@ export default function NavbarActions() {
 
 	if (!isMounted) return null;
 
+	const onClick = () => {
+		router.push("/cart");
+	};
+
 	return (
 		<div className="ml-auto flex items-center gap-x-4">
 			<Button
-				onClick={() => router.push("/cart")}
+				onClick={onClick}
 				className="group flex items-center bg-background-container px-2 hover:text-warning"
 			>
 				<ShoppingBag

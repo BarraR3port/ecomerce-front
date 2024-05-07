@@ -3,13 +3,12 @@ import Container from "@ui/container";
 import Link from "next/link";
 import type { Category } from "../types";
 import NavbarActions from "./navbar-actions";
+import { getCategories } from "@/query/category";
 
 export const revalidate = 0;
 
 export default async function NavBar() {
-	const categories: Category[] = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`).then(async res =>
-		res.json()
-	);
+	const categories: Category[] = await getCategories();
 
 	return (
 		<div className="border-b">
