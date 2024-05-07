@@ -41,10 +41,6 @@ export default function Summary() {
 		if (response) {
 			router.replace(response.url);
 			setLoading(false);
-			/* 
-			const location = new Location();
-			location.pathname = response.url;
-			window.location = location; */
 		}
 	};
 
@@ -56,7 +52,13 @@ export default function Summary() {
 				<div className="flex items-center justify-between">Total</div>
 				<Currency value={totalPrice} />
 			</div>
-			<Button loading={loading} onClick={onCheckout} className="mt-6" variant="primary">
+			<Button
+				disabled={products.length === 0}
+				loading={loading}
+				onClick={onCheckout}
+				className="mt-6"
+				variant="primary"
+			>
 				Pagar
 			</Button>
 		</div>
