@@ -9,5 +9,9 @@ export async function checkOut(productIds: string[]): Promise<CheckoutResponse> 
 		.post("/checkout", {
 			productIds
 		})
+		.catch(err => {
+			console.error("ERROR CTMMMMMMMMM", err);
+			return err.response.data;
+		})
 		.then(res => res.data);
 }

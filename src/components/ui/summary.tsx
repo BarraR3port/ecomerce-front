@@ -10,6 +10,12 @@ import { useEffect, useState } from "react";
 import { useToast } from "./use-toast";
 
 export default function Summary() {
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
+
 	const searchParams = useSearchParams();
 	const { products, clearCart } = useCart();
 	const { toast } = useToast();
@@ -44,6 +50,7 @@ export default function Summary() {
 		}
 	};
 
+	if (!isMounted) return null;
 	return (
 		<div className="rounded-md py-6 lg:col-span-5 lg:mt-0">
 			<h2 className="text-lg font-semibold">Resumen</h2>
