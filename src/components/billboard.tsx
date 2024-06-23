@@ -1,4 +1,6 @@
+import { cn } from "@/lib/utils";
 import type { Billboard as BillboardType } from "../types";
+import Image from "next/image";
 
 interface BillboardProps {
 	billboard: BillboardType;
@@ -7,14 +9,15 @@ interface BillboardProps {
 export default function Billboard({ billboard }: BillboardProps) {
 	return (
 		<div className="p-4 sm:p-6 lg:p-8 rounded-xl overflow-hidden ">
-			<div
-				className="rounded-xl relative aspect-video lg:aspect-video-lg bg-cover bg-center bg-no-repeat h-96 lg:h-96 w-full sm:w-full lg:w-full"
-				style={{
-					backgroundImage: `url(${billboard?.imageUrl})`
-				}}
-			>
+			<div className="relative rounded-xl aspect-video lg:aspect-video-lg h-96 lg:h-96 w-full sm:w-full lg:w-full">
+				<Image
+					src={billboard?.imageUrl}
+					alt={billboard?.label || "Billboard image"}
+					layout="fill"
+					className={cn("object-cover rounded-xl", billboard.hiddenLabel && "object-contain")}
+				/>
 				{!billboard.hiddenLabel && (
-					<div className="h-full w-full flex flex-col justify-center items-center gap-y-8">
+					<div className="absolute inset-0 flex flex-col justify-center items-center gap-y-8">
 						<div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs text-center">
 							{billboard?.label}
 						</div>
